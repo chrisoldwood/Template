@@ -1,28 +1,15 @@
-/******************************************************************************
-** (C) Chris Oldwood
-**
-** MODULE:		APPDLG.CPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	CAppDlg class definition.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! \file   AppDlg.cpp
+//! \brief  The AppDlg class definition.
+//! \author Chris Oldwood
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
+#include "AppDlg.hpp"
 
-/******************************************************************************
-** Method:		Default constructor.
-**
-** Description:	.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Constructor.
 
-CAppDlg::CAppDlg()
+AppDlg::AppDlg()
 	: CMainDlg(IDD_MAIN)
 {
 /*
@@ -36,18 +23,16 @@ CAppDlg::CAppDlg()
 */
 }
 
-/******************************************************************************
-** Method:		OnInitDialog()
-**
-** Description:	Initialise the dialog.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Destructor.
 
-void CAppDlg::OnInitDialog()
+AppDlg::~AppDlg()
+{
+}
+
+////////////////////////////////////////////////////////////////////////////////
+//! Handle dialog creation.
+
+void AppDlg::OnInitDialog()
 {
 }

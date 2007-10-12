@@ -1,44 +1,35 @@
-/******************************************************************************
-** (C) Chris Oldwood
-**
-** MODULE:		APPTOOLBAR.HPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	The CAppToolBar class declaration.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! \file   AppToolbar.hpp
+//! \brief  The AppToolbar class declaration.
+//! \author Chris Oldwood
 
 // Check for previous inclusion
-#ifndef APPTOOLBAR_HPP
-#define APPTOOLBAR_HPP
+#ifndef APP_APPTOOLBAR_HPP
+#define APP_APPTOOLBAR_HPP
 
-/******************************************************************************
-** 
-** This is the applications toolbar.
-**
-*******************************************************************************
-*/
+#if _MSC_VER > 1000
+#pragma once
+#endif
 
-class CAppToolBar : public CToolBar
+#include <WCL/ToolBar.hpp>
+#include <WCL/CmdBtn.hpp>
+
+////////////////////////////////////////////////////////////////////////////////
+//! The application toolbar.
+
+class AppToolbar : public CToolBar
 {
 public:
-	//
-	// Constructors/Destructor.
-	//
-	CAppToolBar();
-	~CAppToolBar();
+	//! Constructor.
+	AppToolbar();
+
+	//! Destructor.
+	virtual ~AppToolbar();
 	
 	//
 	// Members.
 	//
-	CCmdButton	m_btnHelp;
+	CCmdButton	m_btnHelp;		//!< The Help button.
 };
 
-/******************************************************************************
-**
-** Implementation of inline functions.
-**
-*******************************************************************************
-*/
-
-#endif //APPTOOLBAR_HPP
+#endif // APP_APPTOOLBAR_HPP

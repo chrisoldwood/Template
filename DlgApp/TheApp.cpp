@@ -1,90 +1,56 @@
-/******************************************************************************
-** (C) Chris Oldwood
-**
-** MODULE:		THEAPP.CPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	The CTheApp class definition.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! \file   TheApp.cpp
+//! \brief  The TheApp class definition.
+//! \author Chris Oldwood
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
+#include "TheApp.hpp"
+#include <WCL/IniFile.hpp>
 
-/******************************************************************************
-**
-** Global variables.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+// Global variables.
 
-// "The" application object.
-CTheApp App;
+//! The application singleton instance.
+TheApp App;
 
-/******************************************************************************
-**
-** Class constants.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+// Constants.
 
 #ifdef _DEBUG
-const char* CTheApp::VERSION      = "v1.0 [Debug]";
+//! The application version string.
+const char* TheApp::VERSION      = "v1.0 [Debug]";
 #else
-const char* CTheApp::VERSION      = "v1.0";
+//! The application version string.
+const char* TheApp::VERSION      = "v1.0";
 #endif
-const char* CTheApp::INI_FILE_VER = "1.0";
 
-/******************************************************************************
-** Method:		Constructor
-**
-** Description:	Default constructor.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+//! The .ini file format version number.
+const char* TheApp::INI_FILE_VER = "1.0";
 
-CTheApp::CTheApp()
-	: CApp(m_AppWnd, m_AppCmds)
+////////////////////////////////////////////////////////////////////////////////
+//! Constructor.
+
+TheApp::TheApp()
+	: CApp(m_oAppWnd, m_oAppCmds)
 {
 
 }
 
-/******************************************************************************
-** Method:		Destructor
-**
-** Description:	Cleanup.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Destructor.
 
-CTheApp::~CTheApp()
+TheApp::~TheApp()
 {
 
 }
 
-/******************************************************************************
-** Method:		OnOpen()
-**
-** Description:	Initialises the application.
-**
-** Parameters:	None.
-**
-** Returns:		true or false.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Handle application startup.
 
-bool CTheApp::OnOpen()
+bool TheApp::OnOpen()
 {
 	// Set the app title.
-	m_strTitle = "Class Generator";
+	m_strTitle = "Example";
 
 	// Load settings.
 	LoadConfig();
@@ -93,31 +59,22 @@ bool CTheApp::OnOpen()
 	m_rCmdControl.CmdBitmap().LoadRsc(IDR_APPTOOLBAR);
 
 	// Create the main window.
-	if (!m_AppWnd.Create())
+	if (!m_oAppWnd.Create())
 		return false;
 
 	// Show it.
-	m_AppWnd.Show(m_iCmdShow);
+	m_oAppWnd.Show(m_iCmdShow);
 
 	// Update UI.
-	m_AppCmds.UpdateUI();
+	m_oAppCmds.UpdateUI();
 
 	return true;
 }
 
-/******************************************************************************
-** Method:		OnClose()
-**
-** Description:	Cleans up the application resources.
-**
-** Parameters:	None.
-**
-** Returns:		true or false.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Handle application shutdown.
 
-bool CTheApp::OnClose()
+bool TheApp::OnClose()
 {
 	// Save settings.
 	SaveConfig();
@@ -125,38 +82,24 @@ bool CTheApp::OnClose()
 	return true;
 }
 
-/******************************************************************************
-** Method:		LoadConfig()
-**
-** Description:	Load the app configuration.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Load the application settings.
 
-void CTheApp::LoadConfig()
+void TheApp::LoadConfig()
 {
+	CIniFile oIniFile;
+
 	// Read the file version.
-	CString strVer = m_oIniFile.ReadString("Version", "Version", INI_FILE_VER);
+	CString strVer = oIniFile.ReadString("Version", "Version", INI_FILE_VER);
 }
 
-/******************************************************************************
-** Method:		SaveConfig()
-**
-** Description:	Save the app configuration.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Save the application settings.
 
-void CTheApp::SaveConfig()
+void TheApp::SaveConfig()
 {
+	CIniFile oIniFile;
+
 	// Write the file version.
-	m_oIniFile.WriteString("Version", "Version", INI_FILE_VER);
+	oIniFile.WriteString("Version", "Version", INI_FILE_VER);
 }

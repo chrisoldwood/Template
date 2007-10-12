@@ -1,28 +1,15 @@
-/******************************************************************************
-** (C) Chris Oldwood
-**
-** MODULE:		APPTOOLBAR.CPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	CAppToolBar class definition.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! \file   AppToolbar.cpp
+//! \brief  The AppToolbar class definition.
+//! \author Chris Oldwood
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
+#include "AppToolbar.hpp"
 
-/******************************************************************************
-** Method:		Constructor.
-**
-** Description:	.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Constructor.
 
-CAppToolBar::CAppToolBar()
+AppToolbar::AppToolbar()
 {
 	// Define the toolbar.
 	DEFINE_TOOLBAR
@@ -30,18 +17,9 @@ CAppToolBar::CAppToolBar()
 	END_TOOLBAR
 }
 
-/******************************************************************************
-** Method:		Destructor.
-**
-** Description:	.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Destructor.
 
-CAppToolBar::~CAppToolBar()
+AppToolbar::~AppToolbar()
 {
 }

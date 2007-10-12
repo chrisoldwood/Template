@@ -1,99 +1,48 @@
-/******************************************************************************
-** (C) Chris Oldwood
-**
-** MODULE:		APPCMDS.CPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	CAppCmds class definition.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! \file   AppCmds.cpp
+//! \brief  The AppCmds class definition.
+//! \author Chris Oldwood
 
-#include "AppHeaders.hpp"
+#include "Common.hpp"
+#include "AppCmds.hpp"
+#include "TheApp.hpp"
 #include "AboutDlg.hpp"
 
-/******************************************************************************
-** Method:		Constructor.
-**
-** Description:	.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Constructor.
 
-CAppCmds::CAppCmds()
+AppCmds::AppCmds()
 {
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
 		CMD_ENTRY(ID_FILE_EXIT,			OnFileExit,			NULL,				-1)
 		// Help menu.
-		CMD_ENTRY(ID_HELP_ABOUT,		OnHelpAbout,		NULL,				10)
+		CMD_ENTRY(ID_HELP_ABOUT,		OnHelpAbout,		NULL,				2)
 	END_CMD_TABLE
 }
 
-/******************************************************************************
-** Method:		Destructor.
-**
-** Description:	.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Destructor.
 
-CAppCmds::~CAppCmds()
+AppCmds::~AppCmds()
 {
 }
 
-/******************************************************************************
-** Method:		OnFileExit()
-**
-** Description:	Terminate the app.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Close the application.
 
-void CAppCmds::OnFileExit()
+void AppCmds::OnFileExit()
 {
-	App.m_AppWnd.Close();
+	App.m_oAppWnd.Close();
 }
 
-/******************************************************************************
-** Method:		OnHelpAbout()
-**
-** Description:	Show the about dialog.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! Show the about dialog.
 
-void CAppCmds::OnHelpAbout()
+void AppCmds::OnHelpAbout()
 {
-	CAboutDlg Dlg;
+	AboutDlg Dlg;
 
-	Dlg.RunModal(App.m_rMainWnd);
+	Dlg.RunModal(App.m_oAppWnd);
 }
-
-/******************************************************************************
-** Method:		OnUI...()
-**
-** Description:	UI update handlers.
-**
-** Parameters:	None.
-**
-** Returns:		Nothing.
-**
-*******************************************************************************
-*/

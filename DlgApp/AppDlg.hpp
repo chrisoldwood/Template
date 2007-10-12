@@ -1,52 +1,38 @@
-/******************************************************************************
-** (C) Chris Oldwood
-**
-** MODULE:		APPDLG.HPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	The CAppDlg class declaration.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! \file   AppDlg.hpp
+//! \brief  The AppDlg class declaration.
+//! \author Chris Oldwood
 
 // Check for previous inclusion
-#ifndef APPDLG_HPP
-#define APPDLG_HPP
+#ifndef APP_APPDLG_HPP
+#define APP_APPDLG_HPP
 
-/******************************************************************************
-** 
-** This is the main application dialog.
-**
-*******************************************************************************
-*/
+#if _MSC_VER > 1000
+#pragma once
+#endif
 
-class CAppDlg : public CMainDlg
+#include <WCL/Maindlg.hpp>
+
+////////////////////////////////////////////////////////////////////////////////
+//! The application main dialog. This is the dialog that sits in the centre of
+//! application window.
+
+class AppDlg : public CMainDlg
 {
 public:
-	//
-	// Constructors/Destructor.
-	//
-	CAppDlg();
+	//! Constructor.
+	AppDlg();
+
+	//! Destructor.
+	virtual ~AppDlg();
 	
-	//
-	// Methods.
-	//
-
-	//
-	// Members.
-	//
-
-protected:
+private:
 	//
 	// Message processors.
 	//
+
+	//! Handle dialog creation.
 	virtual void OnInitDialog();
 };
 
-/******************************************************************************
-**
-** Implementation of inline functions.
-**
-*******************************************************************************
-*/
-
-#endif //APPDLG_HPP
+#endif // APP_APPDLG_HPP

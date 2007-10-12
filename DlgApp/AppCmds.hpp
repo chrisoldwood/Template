@@ -1,58 +1,43 @@
-/******************************************************************************
-** (C) Chris Oldwood
-**
-** MODULE:		APPCMDS.HPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	The CAppCmds class declaration.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! \file   AppCmds.hpp
+//! \brief  The AppCmds class declaration.
+//! \author Chris Oldwood
 
 // Check for previous inclusion
-#ifndef APPCMDS_HPP
-#define APPCMDS_HPP
+#ifndef APP_APPCMDS_HPP
+#define APP_APPCMDS_HPP
 
-/******************************************************************************
-** 
-** Application command controller.
-**
-*******************************************************************************
-*/
+#if _MSC_VER > 1000
+#pragma once
+#endif
 
-class CAppCmds : public CCmdControl
+#include <WCL/CmdCtrl.hpp>
+
+////////////////////////////////////////////////////////////////////////////////
+//! The application command controller.
+
+class AppCmds : public CCmdControl
 {
 public:
-	//
-	// Constructors/Destructor.
-	//
-	CAppCmds();
-	~CAppCmds();
+	//! Constructor.
+	AppCmds();
+
+	//! Destructor.
+	virtual ~AppCmds();
 
 	//
 	// Commands.
 	//
 
-	// File menu.
+	//! Close the application.
 	void OnFileExit();
 
-	// Help menu.
+	//! Show the about dialog.
 	void OnHelpAbout();
 
 	//
 	// UI handlers.
 	//
-
-protected:
-	//
-	// Internal methods.
-	//
 };
 
-/******************************************************************************
-**
-** Implementation of inline functions.
-**
-*******************************************************************************
-*/
-
-#endif //APPCMDS_HPP
+#endif // APP_APPCMDS_HPP

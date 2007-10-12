@@ -1,84 +1,75 @@
-/******************************************************************************
-** (C) Chris Oldwood
-**
-** MODULE:		THEAPP.HPP
-** COMPONENT:	The Application.
-** DESCRIPTION:	The CTheApp class declaration.
-**
-*******************************************************************************
-*/
+////////////////////////////////////////////////////////////////////////////////
+//! \file   TheApp.hpp
+//! \brief  The TheApp class declaration.
+//! \author Chris Oldwood
 
 // Check for previous inclusion
-#ifndef THEAPP_HPP
-#define THEAPP_HPP
+#ifndef APP_THEAPP_HPP
+#define APP_THEAPP_HPP
 
-/******************************************************************************
-** 
-** The application class.
-**
-*******************************************************************************
-*/
+#if _MSC_VER > 1000
+#pragma once
+#endif
 
-class CTheApp : public CApp
+#include <WCL/App.hpp>
+#include "AppWnd.hpp"
+#include "AppCmds.hpp"
+
+////////////////////////////////////////////////////////////////////////////////
+//! The application singleton.
+
+class TheApp : public CApp
 {
 public:
-	//
-	// Constructors/Destructor.
-	//
-	CTheApp();
-	~CTheApp();
+	//! Constructor.
+	TheApp();
+
+	//! Destructor.
+	virtual ~TheApp();
 
 	//
-	// Members
+	// Public members.
 	//
-	CAppWnd		m_AppWnd;			// Main window.
-	CAppCmds	m_AppCmds;			// Command handler.
+	AppWnd		m_oAppWnd;		//!< The main window.
+	AppCmds		m_oAppCmds;		//!< The command handler.
 
 	//
-	// Constants.
+	// Public Constants.
 	//
+
+	//! The application version string.
 	static const char* VERSION;
 
-protected:
+private:
 	//
-	// Startup and Shutdown template methods.
+	// Template methods.
 	//
-	virtual	bool OnOpen();
-	virtual	bool OnClose();
 
-	//
-	// Preferences.
-	//
-	CIniFile	m_oIniFile;		// .INI FIle
+	//! Handle application startup.
+	virtual	bool OnOpen();
+
+	//! Handle application shutdown.
+	virtual	bool OnClose();
 
 	//
 	// Internal methods.
 	//
+
+	//! Load the application settings.
 	void LoadConfig();
+
+	//! Save the application settings.
 	void SaveConfig();
 
 	//
 	// Constants.
 	//
+
+	//! The .ini file format version number.
 	static const char* INI_FILE_VER;
 };
 
-/******************************************************************************
-**
-** Global variables.
-**
-*******************************************************************************
-*/
+//! The application singleton instance.
+extern TheApp App;
 
-// The application object.
-extern CTheApp App;
-
-/******************************************************************************
-**
-** Implementation of inline functions.
-**
-*******************************************************************************
-*/
-
-
-#endif //THEAPP_HPP
+#endif // APP_THEAPP_HPP

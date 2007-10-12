@@ -1,16 +1,16 @@
 //{{NO_DEPENDENCIES}}
-// Microsoft Developer Studio generated include file.
+// Microsoft Visual C++ generated include file.
 // Used by App.rc
 //
 #define IDR_APPICON                     2
 #define IDR_APPMENU                     3
 #define IDR_APPACCEL                    4
 #define IDR_APPTOOLBAR                  5
+#define ID_FILE_POPUP                   100
 #define ID_FILE_EXIT                    109
 #define ID_HELP_POPUP                   900
 #define ID_HELP_CONTENTS                901
 #define ID_HELP_ABOUT                   902
-#define IDC_GRID                        1060
 #define IDC_WEBSITE                     1083
 #define IDC_EMAIL                       1084
 #define IDC_VERSION                     1085

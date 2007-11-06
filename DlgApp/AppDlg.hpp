@@ -11,7 +11,7 @@
 #pragma once
 #endif
 
-#include <WCL/Maindlg.hpp>
+#include <WCL/MainDlg.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 //! The application main dialog. This is the dialog that sits in the centre of

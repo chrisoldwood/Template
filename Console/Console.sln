@@ -12,12 +12,17 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 1
+		SccNumberOfProjects = 3
 		SccProjectUniqueName0 = ..\\..\\Lib\\Core\\Core.vcproj
 		SccProjectName0 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
 		SccLocalPath0 = ..\\..\\Lib\\Core
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccProjectUniqueName1 = Console.vcproj
+		SccLocalPath1 = .
+		CanCheckoutShared = true
+		SccLocalPath2 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {F185F14B-456B-47E0-B357-541A407A1D4D}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug

@@ -16,17 +16,21 @@ Global
 		DPCodeReviewSolutionGUID = {00000000-0000-0000-0000-000000000000}
 	EndGlobalSection
 	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 2
+		SccNumberOfProjects = 4
 		SccProjectUniqueName0 = ..\\..\\Lib\\Core\\Core.vcproj
 		SccProjectName0 = \u0022$/Win32/Lib/Core\u0022,\u0020QWDAAAAA
 		SccLocalPath0 = ..\\..\\Lib\\Core
-		SccProvider0 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
 		SccProjectUniqueName1 = ..\\..\\Lib\\WCL\\Wcl.vcproj
 		SccProjectName1 = \u0022$/Win32/Lib/WCL\u0022,\u0020HPAAAAAA
 		SccLocalPath1 = ..\\..\\Lib\\WCL
-		SccProvider1 = MSSCCI:Microsoft\u0020Visual\u0020SourceSafe
 		CanCheckoutShared = true
+		SccProjectUniqueName2 = DlgApp.vcproj
+		SccLocalPath2 = .
+		CanCheckoutShared = true
+		SccLocalPath3 = .
+		CanCheckoutShared = true
+		SolutionUniqueID = {E04E2CAF-5DEB-4B06-B567-A790D9389CBC}
 	EndGlobalSection
 	GlobalSection(SolutionConfiguration) = preSolution
 		Debug = Debug

@@ -23,15 +23,15 @@ AppCmds::AppCmds()
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
-		CMD_ENTRY(ID_FILE_NEW,					OnFileNew,		NULL,				 0)
-		CMD_ENTRY(ID_FILE_OPEN,					OnFileOpen,		NULL,				 1)
-		CMD_ENTRY(ID_FILE_SAVE,					OnFileSave,		OnUIFileSave,		 2)
-		CMD_ENTRY(ID_FILE_SAVEAS,				OnFileSaveAs,	OnUIFileSaveAs,		-1)
-		CMD_ENTRY(ID_FILE_CLOSE,				OnFileClose,	OnUIFileClose,		 1)
-		CMD_RANGE(ID_MRU_FIRST,	ID_MRU_LAST,	OnFileOpenMRU,	OnUIFileOpenMRU,	-1)
-		CMD_ENTRY(ID_FILE_EXIT,					OnFileExit,		NULL,				-1)
+		CMD_ENTRY(ID_FILE_NEW,					&AppCmds::OnFileNew,		NULL,						 0)
+		CMD_ENTRY(ID_FILE_OPEN,					&AppCmds::OnFileOpen,		NULL,						 1)
+		CMD_ENTRY(ID_FILE_SAVE,					&AppCmds::OnFileSave,		&AppCmds::OnUIFileSave,		 2)
+		CMD_ENTRY(ID_FILE_SAVEAS,				&AppCmds::OnFileSaveAs,		&AppCmds::OnUIFileSaveAs,	-1)
+		CMD_ENTRY(ID_FILE_CLOSE,				&AppCmds::OnFileClose,		&AppCmds::OnUIFileClose,	 1)
+		CMD_RANGE(ID_MRU_FIRST,	ID_MRU_LAST,	&AppCmds::OnFileOpenMRU,	&AppCmds::OnUIFileOpenMRU,	-1)
+		CMD_ENTRY(ID_FILE_EXIT,					&AppCmds::OnFileExit,		NULL,						-1)
 		// Help menu.
-		CMD_ENTRY(ID_HELP_ABOUT,				OnHelpAbout,	NULL,				10)
+		CMD_ENTRY(ID_HELP_ABOUT,				&AppCmds::OnHelpAbout,		NULL,						10)
 	END_CMD_TABLE
 }
 

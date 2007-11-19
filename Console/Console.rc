@@ -7,7 +7,7 @@
 //
 // Generated from the TEXTINCLUDE 2 resource.
 //
-#include "afxres.h"
+#include <WCL/CommonRsc.h>
 
 /////////////////////////////////////////////////////////////////////////////
 #undef APSTUDIO_READONLY_SYMBOLS
@@ -34,13 +34,14 @@ END
 
 2 TEXTINCLUDE 
 BEGIN
-    "#include ""afxres.h""\r\n"
+    "#include <WCL/CommonRsc.h>\r\n"
     "\0"
 END
 
 3 TEXTINCLUDE 
 BEGIN
-    "#include ""App.rcv""\0"
+    "#include ""App.rcv""\r\n"
+    "\0"
 END
 
 #endif    // APSTUDIO_INVOKED
@@ -56,6 +57,7 @@ END
 // Generated from the TEXTINCLUDE 3 resource.
 //
 #include "App.rcv"
+
 /////////////////////////////////////////////////////////////////////////////
 #endif    // not APSTUDIO_INVOKED
 

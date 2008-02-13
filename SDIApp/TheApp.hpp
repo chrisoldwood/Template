@@ -38,7 +38,7 @@ public:
 	//
 
 	//! The application version string.
-	static const char* VERSION;
+	static const tchar* VERSION;
 
 private:
 	//
@@ -58,10 +58,10 @@ private:
 	virtual CView* CreateView(CDoc& rDoc) const;
 
 	//! Get the list of supported file extendsions.
-	virtual const char* FileExts() const;
+	virtual const tchar* FileExts() const;
 
 	//! Get the default file extension.
-	virtual const char* DefFileExt() const;
+	virtual const tchar* DefFileExt() const;
 
 	//
 	// Internal methods.
@@ -78,7 +78,7 @@ private:
 	//
 
 	//! The .ini file format version number.
-	static const char* INI_FILE_VER;
+	static const tchar* INI_FILE_VER;
 };
 
 //! The application singleton instance.

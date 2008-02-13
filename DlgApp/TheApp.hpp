@@ -38,7 +38,7 @@ public:
 	//
 
 	//! The application version string.
-	static const char* VERSION;
+	static const tchar* VERSION;
 
 private:
 	//
@@ -66,7 +66,7 @@ private:
 	//
 
 	//! The .ini file format version number.
-	static const char* INI_FILE_VER;
+	static const tchar* INI_FILE_VER;
 };
 
 //! The application singleton instance.

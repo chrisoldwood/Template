@@ -18,14 +18,14 @@ TheApp App;
 
 #ifdef _DEBUG
 //! The application version string.
-const char* TheApp::VERSION      = "v1.0 [Debug]";
+const tchar* TheApp::VERSION = TXT("v1.0 [Debug]");
 #else
 //! The application version string.
-const char* TheApp::VERSION      = "v1.0";
+const tchar* TheApp::VERSION = TXT("v1.0");
 #endif
 
 //! The .ini file format version number.
-const char* TheApp::INI_FILE_VER = "1.0";
+const tchar* TheApp::INI_FILE_VER = TXT("1.0");
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Constructor.
@@ -50,7 +50,7 @@ TheApp::~TheApp()
 bool TheApp::OnOpen()
 {
 	// Set the app title.
-	m_strTitle = "Example";
+	m_strTitle = TXT("Example");
 
 	// Load settings.
 	LoadConfig();
@@ -90,7 +90,7 @@ void TheApp::LoadConfig()
 	CIniFile oIniFile;
 
 	// Read the file version.
-	CString strVer = oIniFile.ReadString("Version", "Version", INI_FILE_VER);
+	CString strVer = oIniFile.ReadString(TXT("Version"), TXT("Version"), INI_FILE_VER);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -101,5 +101,5 @@ void TheApp::SaveConfig()
 	CIniFile oIniFile;
 
 	// Write the file version.
-	oIniFile.WriteString("Version", "Version", INI_FILE_VER);
+	oIniFile.WriteString(TXT("Version"), TXT("Version"), INI_FILE_VER);
 }

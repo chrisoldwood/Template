@@ -133,6 +133,9 @@ void TheApp::LoadConfig()
 
 	// Read the file version.
 	CString strVer = oIniFile.ReadString(TXT("Version"), TXT("Version"), INI_FILE_VER);
+
+	// Read the MRU list.
+	m_MRUList.Load(oIniFile);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -144,4 +147,7 @@ void TheApp::SaveConfig()
 
 	// Write the file version.
 	oIniFile.WriteString(TXT("Version"), TXT("Version"), INI_FILE_VER);
+
+	// Save the MRU list.
+	m_MRUList.Save(oIniFile);
 }

@@ -18,17 +18,10 @@ TheApp App;
 ////////////////////////////////////////////////////////////////////////////////
 // Constants.
 
-#ifdef _DEBUG
-//! The application version string.
-const tchar* TheApp::VERSION = TXT("v1.0 [Debug]");
-#else
-//! The application version string.
-const tchar* TheApp::VERSION = TXT("v1.0");
-#endif
-
 //! The .ini file format version number.
-const tchar* TheApp::INI_FILE_VER = TXT("1.0");
+const tchar* INI_FILE_VER = TXT("1.0");
 
+//! The maximum size of the MRU list.
 const int MRU_LIST_SIZE = ID_FILE_MRU_4-ID_FILE_MRU_1+1;
 
 ////////////////////////////////////////////////////////////////////////////////

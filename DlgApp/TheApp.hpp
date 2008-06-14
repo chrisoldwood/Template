@@ -33,13 +33,6 @@ public:
 	AppWnd		m_oAppWnd;		//!< The main window.
 	AppCmds		m_oAppCmds;		//!< The command handler.
 
-	//
-	// Public Constants.
-	//
-
-	//! The application version string.
-	static const tchar* VERSION;
-
 private:
 	//
 	// Template methods.
@@ -60,13 +53,6 @@ private:
 
 	//! Save the application settings.
 	void SaveConfig();
-
-	//
-	// Constants.
-	//
-
-	//! The .ini file format version number.
-	static const tchar* INI_FILE_VER;
 };
 
 //! The application singleton instance.

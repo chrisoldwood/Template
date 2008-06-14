@@ -30,6 +30,7 @@ protected:
 	// Controls.
 	//
 	CLabel		m_txtVersion;		//!< The version label.
+	CLabel		m_txtCopyright;		//!< The copyright label.
 	CURLLabel	m_txtEmail;			//!< The email address label.
 	CURLLabel	m_txtWebSite;		//!< The website label.
 	

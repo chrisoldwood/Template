@@ -42,6 +42,7 @@ void AppWnd::OnCreate(const CRect& rcClient)
 	StatusBar(&m_oStatusbar);
 
 	m_oAppDlg.RunModeless(*this);
+	ActiveDlg(&m_oAppDlg);
 
 	// Call base class.
 	CDlgFrame::OnCreate(rcClient);

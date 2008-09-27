@@ -5,8 +5,15 @@
 
 #include "Common.hpp"
 #include <tchar.h>
+#include "TheApp.hpp"
 
-int _tmain(int /*nArgc*/, tchar* /*apszArgv*/[])
+//! The application.
+static TheApp g_oApp;
+
+////////////////////////////////////////////////////////////////////////////////
+//! The process entry point.
+
+int _tmain(int nArgc, tchar* apszArgv[])
 {
-	return 0;
+	return g_oApp.Main(nArgc, apszArgv);
 }

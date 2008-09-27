@@ -20,12 +20,12 @@ FILESUBTYPE		0
 BEGIN
 	BLOCK "StringFileInfo"
 	BEGIN
-		BLOCK "040904E4"
+		BLOCK "080904E4"
 		BEGIN
 			VALUE "FileDescription",  "Example\0"
 			VALUE "FileVersion",      "1.0\0"
 			VALUE "InternalName",     "Example.exe\0"
-			VALUE "LegalCopyright",   "(C) Chris Oldwood 2007\0"
+			VALUE "LegalCopyright",   "(C) Chris Oldwood 2008\0"
 			VALUE "OriginalFilename", "Example.exe\0"
 			VALUE "ProductName",      "Example\0"
 			VALUE "ProductVersion",   "1.0\0"
@@ -36,6 +36,6 @@ BEGIN
 	END
 	BLOCK "VarFileInfo"
 	BEGIN
-		VALUE "Translation", 0x809, 1252
+		VALUE "Translation", 0x0809, 0x04E4
 	END
 END

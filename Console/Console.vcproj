@@ -129,6 +129,9 @@
 		<ProjectReference
 			ReferencedProjectIdentifier="{790BC113-52FB-4565-8968-79B8B011C520}"
 			Name="Core"/>
+		<ProjectReference
+			ReferencedProjectIdentifier="{9B0335B6-93BE-4604-8497-27431874D758}"
+			Name="Wcl"/>
 	</References>
 	<Files>
 		<Filter
@@ -153,6 +156,9 @@
 						UsePrecompiledHeader="1"/>
 				</FileConfiguration>
 			</File>
+			<File
+				RelativePath=".\TheApp.cpp">
+			</File>
 		</Filter>
 		<Filter
 			Name="Header Files"
@@ -160,6 +166,9 @@
 			UniqueIdentifier="{93995380-89BD-4b04-88EB-625FBE52EBFB}">
 			<File
 				RelativePath=".\Common.hpp">
+			</File>
+			<File
+				RelativePath=".\TheApp.hpp">
 			</File>
 		</Filter>
 		<Filter

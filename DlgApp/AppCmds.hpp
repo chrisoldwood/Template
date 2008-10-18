@@ -30,10 +30,10 @@ public:
 	//
 
 	//! Close the application.
-	void OnFileExit();
+	void onFileExit();
 
 	//! Show the about dialog.
-	void OnHelpAbout();
+	void onHelpAbout();
 
 	//
 	// UI handlers.

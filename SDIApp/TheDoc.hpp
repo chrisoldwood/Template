@@ -30,17 +30,17 @@ public:
 	//
 
 	//! Checks if the document has been modified.
-	virtual bool Modified() const;
+	virtual bool isModified() const;
 
 	//
 	// Methods.
 	//
 
 	//! Load the document from a stream.
-	virtual void Read (WCL::IInputStream& rStream);
+	virtual void Read (WCL::IInputStream& stream);
 
 	//! Save the document to a stream.
-	virtual void Write(WCL::IOutputStream& rStream);
+	virtual void Write(WCL::IOutputStream& stream);
 
 private:
 	//

@@ -30,44 +30,44 @@ public:
 	//
 
 	//! Create a new document.
-	void OnFileNew();
+	void onFileNew();
 
 	//! Open an existing document.
-	void OnFileOpen();
+	void onFileOpen();
 
 	//! Save the current document.
-	void OnFileSave();
+	void onFileSave();
 
 	//! Save the current document with another filename.
-	void OnFileSaveAs();
+	void onFileSaveAs();
 
 	//! Close the current document.
-	void OnFileClose();
+	void onFileClose();
 
 	//! Open one of the previous documents.
-	void OnFileOpenMRU(uint iCmdID);
+	void onFileOpenMRU(uint cmd);
 
 	//! Close the application.
-	void OnFileExit();
+	void onFileExit();
 
 	//! Show the about dialog.
-	void OnHelpAbout();
+	void onHelpAbout();
 
 	//
 	// UI handlers.
 	//
 
 	//! Update the command UI.
-	void OnUIFileSave();
+	void onUIFileSave();
 
 	//! Update the command UI.
-	void OnUIFileSaveAs();
+	void onUIFileSaveAs();
 
 	//! Update the command UI.
-	void OnUIFileClose();
+	void onUIFileClose();
 
 	//! Update the command UI.
-	void OnUIFileOpenMRU();
+	void onUIFileOpenMRU();
 };
 
 #endif // APP_APPCMDS_HPP

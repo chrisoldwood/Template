@@ -16,9 +16,9 @@ AppCmds::AppCmds()
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
-		CMD_ENTRY(ID_FILE_EXIT,		&AppCmds::OnFileExit,	NULL,	-1)
+		CMD_ENTRY(ID_FILE_EXIT,		&AppCmds::onFileExit,	NULL,	-1)
 		// Help menu.
-		CMD_ENTRY(ID_HELP_ABOUT,	&AppCmds::OnHelpAbout,	NULL,	 2)
+		CMD_ENTRY(ID_HELP_ABOUT,	&AppCmds::onHelpAbout,	NULL,	 2)
 	END_CMD_TABLE
 }
 
@@ -32,17 +32,17 @@ AppCmds::~AppCmds()
 ////////////////////////////////////////////////////////////////////////////////
 //! Close the application.
 
-void AppCmds::OnFileExit()
+void AppCmds::onFileExit()
 {
-	App.m_oAppWnd.Close();
+	g_app.m_appWnd.Close();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Show the about dialog.
 
-void AppCmds::OnHelpAbout()
+void AppCmds::onHelpAbout()
 {
-	AboutDlg Dlg;
+	AboutDlg aboutDlg;
 
-	Dlg.RunModal(App.m_oAppWnd);
+	aboutDlg.RunModal(g_app.m_appWnd);
 }

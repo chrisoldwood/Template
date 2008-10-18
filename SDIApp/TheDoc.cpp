@@ -23,7 +23,7 @@ TheDoc::~TheDoc()
 ////////////////////////////////////////////////////////////////////////////////
 //! Checks if the document has been modified.
 
-bool TheDoc::Modified() const
+bool TheDoc::isModified() const
 {
 	return false;
 }
@@ -31,13 +31,13 @@ bool TheDoc::Modified() const
 ////////////////////////////////////////////////////////////////////////////////
 //! Load the document from a stream.
 
-void TheDoc::Read(WCL::IInputStream& /*rStream*/)
+void TheDoc::Read(WCL::IInputStream& /*stream*/)
 {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Save the document to a stream.
 
-void TheDoc::Write(WCL::IOutputStream& /*rStream*/)
+void TheDoc::Write(WCL::IOutputStream& /*stream*/)
 {
 }

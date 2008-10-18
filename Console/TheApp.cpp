@@ -12,7 +12,7 @@
 ////////////////////////////////////////////////////////////////////////////////
 // Local variables.
 
-static tstring s_strAppName(TXT("Application"));
+static tstring s_appName(TXT("Application"));
 
 ////////////////////////////////////////////////////////////////////////////////
 // The table of command line switches.
@@ -23,18 +23,18 @@ enum
 	VERSION	= 1,	//!< Show the program version and copyright.
 };
 
-static Core::CmdLineSwitch s_aoSwitches[] = 
+static Core::CmdLineSwitch s_switches[] = 
 {
 	{ USAGE,	TXT("?"),	NULL,			Core::CmdLineSwitch::ONCE,	Core::CmdLineSwitch::NONE,	NULL,	TXT("Display the program options syntax")	},
 	{ VERSION,	TXT("v"),	TXT("version"),	Core::CmdLineSwitch::ONCE,	Core::CmdLineSwitch::NONE,	NULL,	TXT("Display the program version")			},
 };
-static size_t s_nCount = ARRAY_SIZE(s_aoSwitches);
+static size_t s_switchCount = ARRAY_SIZE(s_switches);
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Default constructor.
 
 TheApp::TheApp()
-	: m_oParser(s_aoSwitches, s_aoSwitches+s_nCount)
+	: m_parser(s_switches, s_switches+s_switchCount)
 {
 }
 
@@ -48,20 +48,20 @@ TheApp::~TheApp()
 ////////////////////////////////////////////////////////////////////////////////
 //! Run the application.
 
-int TheApp::Run(int nArgc, tchar* apszArgv[])
+int TheApp::run(int argc, tchar* argv[])
 {
-	m_oParser.Parse(nArgc, apszArgv, Core::CmdLineParser::ALLOW_UNIX_FORMAT);
+	m_parser.Parse(argc, argv, Core::CmdLineParser::ALLOW_UNIX_FORMAT);
 
 	// Request for help?
-	if (m_oParser.IsSwitchSet(USAGE))
+	if (m_parser.IsSwitchSet(USAGE))
 	{
-		ShowUsage();
+		showUsage();
 		return EXIT_SUCCESS;
 	}
 	// Request for version?
-	else if (m_oParser.IsSwitchSet(VERSION))
+	else if (m_parser.IsSwitchSet(VERSION))
 	{
-		ShowVersion();
+		showVersion();
 		return EXIT_SUCCESS;
 	}
 
@@ -71,31 +71,31 @@ int TheApp::Run(int nArgc, tchar* apszArgv[])
 ////////////////////////////////////////////////////////////////////////////////
 //! Display the program options syntax.
 
-void TheApp::ShowUsage()
+void TheApp::showUsage()
 {
 	tcout << std::endl;
 	tcout << TXT("USAGE: Application [options] ...") << std::endl;
 	tcout << std::endl;
 
-	tcout << m_oParser.FormatSwitches(Core::CmdLineParser::UNIX);
+	tcout << m_parser.FormatSwitches(Core::CmdLineParser::UNIX);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Display the program version.
 
-void TheApp::ShowVersion()
+void TheApp::showVersion()
 {
 	// Extract details from the resources.
-	tstring strFileName  = CPath::Application();
-	tstring strVersion   = WCL::VerInfoReader::GetStringValue(strFileName, WCL::VerInfoReader::PRODUCT_VERSION);
-	tstring strCopyright = WCL::VerInfoReader::GetStringValue(strFileName, WCL::VerInfoReader::LEGAL_COPYRIGHT);
+	tstring filename  = CPath::Application();
+	tstring version   = WCL::VerInfoReader::GetStringValue(filename, WCL::VerInfoReader::PRODUCT_VERSION);
+	tstring copyright = WCL::VerInfoReader::GetStringValue(filename, WCL::VerInfoReader::LEGAL_COPYRIGHT);
 
 #ifdef _DEBUG
-	strVersion += TXT(" [Debug]");
+	version += TXT(" [Debug]");
 #endif
 
 	// Display version etc.
 	tcout << std::endl;
-	tcout << s_strAppName << TXT(" v") << strVersion << std::endl;
-	tcout << strCopyright << std::endl;
+	tcout << s_appName << TXT(" v") << version << std::endl;
+	tcout << copyright << std::endl;
 }

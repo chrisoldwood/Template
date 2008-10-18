@@ -24,23 +24,23 @@ AppWnd::~AppWnd()
 ////////////////////////////////////////////////////////////////////////////////
 //! Handle window creation.
 
-void AppWnd::OnCreate(const CRect& rcClient)
+void AppWnd::OnCreate(const CRect& clientRect)
 {
 	//
 	// Create and attach the components.
 	//
-	m_oAccel.LoadRsc(IDR_APPACCEL);
-	Accel(&m_oAccel);
+	m_accelerators.LoadRsc(IDR_APPACCEL);
+	Accel(&m_accelerators);
 
-	m_oMenu.LoadRsc(IDR_APPMENU);
-	Menu(&m_oMenu);
+	m_menu.LoadRsc(IDR_APPMENU);
+	Menu(&m_menu);
 
-	m_oToolbar.Create(*this, IDC_TOOL_BAR, rcClient);
-	ToolBar(&m_oToolbar);
+	m_toolbar.Create(*this, IDC_TOOL_BAR, clientRect);
+	ToolBar(&m_toolbar);
 
-	m_oStatusbar.Create(*this, IDC_STATUS_BAR, rcClient);
-	StatusBar(&m_oStatusbar);
+	m_statusbar.Create(*this, IDC_STATUS_BAR, clientRect);
+	StatusBar(&m_statusbar);
 
 	// Call base class.
-	CSDIFrame::OnCreate(rcClient);
+	CSDIFrame::OnCreate(clientRect);
 }

@@ -13,11 +13,11 @@ AppToolbar::AppToolbar()
 {
 	// Define the toolbar.
 	DEFINE_TOOLBAR
-		TBCTL(&m_btnNew,	ID_FILE_NEW)
-		TBCTL(&m_btnOpen,	ID_FILE_OPEN)
-		TBCTL(&m_btnSave,	ID_FILE_SAVE)
+		TBCTL(&m_new,	ID_FILE_NEW)
+		TBCTL(&m_open,	ID_FILE_OPEN)
+		TBCTL(&m_save,	ID_FILE_SAVE)
 		TBGAP()
-		TBCTL(&m_btnHelp,	ID_HELP_ABOUT)
+		TBCTL(&m_help,	ID_HELP_ABOUT)
 	END_TOOLBAR
 }
 

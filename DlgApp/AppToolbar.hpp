@@ -29,7 +29,7 @@ public:
 	//
 	// Members.
 	//
-	CCmdButton	m_btnHelp;		//!< The Help button.
+	CCmdButton	m_help;		//!< The Help button.
 };
 
 #endif // APP_APPTOOLBAR_HPP

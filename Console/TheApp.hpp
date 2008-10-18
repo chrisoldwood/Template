@@ -31,23 +31,23 @@ protected:
 	//
 
 	//! Run the application.
-	virtual int Run(int nArgc, tchar* apszArgv[]);
+	virtual int run(int argc, tchar* argv[]);
 
 	//! Display the program options syntax.
-	virtual void ShowUsage();
+	virtual void showUsage();
 
 private:
 	//
 	// Members.
 	//
-	Core::CmdLineParser m_oParser;		//!< The command line parser.
+	Core::CmdLineParser m_parser;		//!< The command line parser.
 
 	//
 	// Internal methods.
 	//
 
 	//! Display the program version.
-	void ShowVersion();
+	void showVersion();
 };
 
 #endif // THEAPP_HPP

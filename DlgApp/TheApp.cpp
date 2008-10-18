@@ -11,7 +11,7 @@
 // Global variables.
 
 //! The application singleton instance.
-TheApp App;
+TheApp g_app;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Constants.
@@ -23,7 +23,7 @@ const tchar* INI_FILE_VER = TXT("1.0");
 //! Constructor.
 
 TheApp::TheApp()
-	: CApp(m_oAppWnd, m_oAppCmds)
+	: CApp(m_appWnd, m_appCmds)
 {
 
 }
@@ -45,20 +45,20 @@ bool TheApp::OnOpen()
 	m_strTitle = TXT("Example");
 
 	// Load settings.
-	LoadConfig();
+	loadConfig();
 	
 	// Load the toolbar bitmap.
 	m_rCmdControl.CmdBitmap().LoadRsc(IDR_APPTOOLBAR);
 
 	// Create the main window.
-	if (!m_oAppWnd.Create())
+	if (!m_appWnd.Create())
 		return false;
 
 	// Show it.
-	m_oAppWnd.Show(m_iCmdShow);
+	m_appWnd.Show(m_iCmdShow);
 
 	// Update UI.
-	m_oAppCmds.UpdateUI();
+	m_appCmds.UpdateUI();
 
 	return true;
 }
@@ -69,7 +69,7 @@ bool TheApp::OnOpen()
 bool TheApp::OnClose()
 {
 	// Save settings.
-	SaveConfig();
+	saveConfig();
 
 	return true;
 }
@@ -77,21 +77,21 @@ bool TheApp::OnClose()
 ////////////////////////////////////////////////////////////////////////////////
 //! Load the application settings.
 
-void TheApp::LoadConfig()
+void TheApp::loadConfig()
 {
-	CIniFile oIniFile;
+	CIniFile iniFile;
 
 	// Read the file version.
-	CString strVer = oIniFile.ReadString(TXT("Version"), TXT("Version"), INI_FILE_VER);
+	CString version = iniFile.ReadString(TXT("Version"), TXT("Version"), INI_FILE_VER);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Save the application settings.
 
-void TheApp::SaveConfig()
+void TheApp::saveConfig()
 {
-	CIniFile oIniFile;
+	CIniFile iniFile;
 
 	// Write the file version.
-	oIniFile.WriteString(TXT("Version"), TXT("Version"), INI_FILE_VER);
+	iniFile.WriteString(TXT("Version"), TXT("Version"), INI_FILE_VER);
 }

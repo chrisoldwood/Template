@@ -29,10 +29,10 @@ public:
 	//
 	// Members.
 	//
-	CCmdButton	m_btnNew;		//!< The New Document button.
-	CCmdButton	m_btnOpen;		//!< The Open Document button.
-	CCmdButton	m_btnSave;		//!< The Save Document button.
-	CCmdButton	m_btnHelp;		//!< The Help button.
+	CCmdButton	m_new;		//!< The New Document button.
+	CCmdButton	m_open;		//!< The Open Document button.
+	CCmdButton	m_save;		//!< The Save Document button.
+	CCmdButton	m_help;		//!< The Help button.
 };
 
 #endif // APP_APPTOOLBAR_HPP

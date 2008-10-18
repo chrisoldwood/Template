@@ -8,12 +8,12 @@
 #include "TheApp.hpp"
 
 //! The application.
-static TheApp g_oApp;
+static TheApp g_app;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! The process entry point.
 
-int _tmain(int nArgc, tchar* apszArgv[])
+int _tmain(int argc, tchar* argv[])
 {
-	return g_oApp.Main(nArgc, apszArgv);
+	return g_app.main(argc, argv);
 }

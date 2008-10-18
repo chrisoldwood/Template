@@ -23,15 +23,15 @@ AppCmds::AppCmds()
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
-		CMD_ENTRY(ID_FILE_NEW,					&AppCmds::OnFileNew,		NULL,						 0)
-		CMD_ENTRY(ID_FILE_OPEN,					&AppCmds::OnFileOpen,		NULL,						 1)
-		CMD_ENTRY(ID_FILE_SAVE,					&AppCmds::OnFileSave,		&AppCmds::OnUIFileSave,		 2)
-		CMD_ENTRY(ID_FILE_SAVEAS,				&AppCmds::OnFileSaveAs,		&AppCmds::OnUIFileSaveAs,	-1)
-		CMD_ENTRY(ID_FILE_CLOSE,				&AppCmds::OnFileClose,		&AppCmds::OnUIFileClose,	 1)
-		CMD_RANGE(ID_MRU_FIRST,	ID_MRU_LAST,	&AppCmds::OnFileOpenMRU,	&AppCmds::OnUIFileOpenMRU,	-1)
-		CMD_ENTRY(ID_FILE_EXIT,					&AppCmds::OnFileExit,		NULL,						-1)
+		CMD_ENTRY(ID_FILE_NEW,					&AppCmds::onFileNew,		NULL,						 0)
+		CMD_ENTRY(ID_FILE_OPEN,					&AppCmds::onFileOpen,		NULL,						 1)
+		CMD_ENTRY(ID_FILE_SAVE,					&AppCmds::onFileSave,		&AppCmds::onUIFileSave,		 2)
+		CMD_ENTRY(ID_FILE_SAVEAS,				&AppCmds::onFileSaveAs,		&AppCmds::onUIFileSaveAs,	-1)
+		CMD_ENTRY(ID_FILE_CLOSE,				&AppCmds::onFileClose,		&AppCmds::onUIFileClose,	 1)
+		CMD_RANGE(ID_MRU_FIRST,	ID_MRU_LAST,	&AppCmds::onFileOpenMRU,	&AppCmds::onUIFileOpenMRU,	-1)
+		CMD_ENTRY(ID_FILE_EXIT,					&AppCmds::onFileExit,		NULL,						-1)
 		// Help menu.
-		CMD_ENTRY(ID_HELP_ABOUT,				&AppCmds::OnHelpAbout,		NULL,						10)
+		CMD_ENTRY(ID_HELP_ABOUT,				&AppCmds::onHelpAbout,		NULL,						10)
 	END_CMD_TABLE
 }
 
@@ -45,7 +45,7 @@ AppCmds::~AppCmds()
 ////////////////////////////////////////////////////////////////////////////////
 //! Create a new document.
 
-void AppCmds::OnFileNew()
+void AppCmds::onFileNew()
 {
 	NewFile();
 }
@@ -53,7 +53,7 @@ void AppCmds::OnFileNew()
 ////////////////////////////////////////////////////////////////////////////////
 //! Open an existing document.
 
-void AppCmds::OnFileOpen()
+void AppCmds::onFileOpen()
 {
 	OpenFile();
 }
@@ -61,7 +61,7 @@ void AppCmds::OnFileOpen()
 ////////////////////////////////////////////////////////////////////////////////
 //! Save the current document.
 
-void AppCmds::OnFileSave()
+void AppCmds::onFileSave()
 {
 	SaveFile();
 }
@@ -69,7 +69,7 @@ void AppCmds::OnFileSave()
 ////////////////////////////////////////////////////////////////////////////////
 //! Save the current document with another filename.
 
-void AppCmds::OnFileSaveAs()
+void AppCmds::onFileSaveAs()
 {
 	SaveFileAs();
 }
@@ -77,7 +77,7 @@ void AppCmds::OnFileSaveAs()
 ////////////////////////////////////////////////////////////////////////////////
 //! Close the current document.
 
-void AppCmds::OnFileClose()
+void AppCmds::onFileClose()
 {
 	CloseFile();
 }
@@ -85,65 +85,65 @@ void AppCmds::OnFileClose()
 ////////////////////////////////////////////////////////////////////////////////
 //! Open one of the previous documents.
 
-void AppCmds::OnFileOpenMRU(uint iCmdID)
+void AppCmds::onFileOpenMRU(uint cmd)
 {
-	OpenMRUFile(iCmdID - ID_MRU_FIRST);
+	OpenMRUFile(cmd - ID_MRU_FIRST);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Close the application.
 
-void AppCmds::OnFileExit()
+void AppCmds::onFileExit()
 {
-	App.m_oAppWnd.Close();
+	g_app.m_appWnd.Close();
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Show the about dialog.
 
-void AppCmds::OnHelpAbout()
+void AppCmds::onHelpAbout()
 {
-	AboutDlg Dlg;
+	AboutDlg aboutDlg;
 
-	Dlg.RunModal(App.m_oAppWnd);
+	aboutDlg.RunModal(g_app.m_appWnd);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Update the command UI.
 
-void AppCmds::OnUIFileSave()
+void AppCmds::onUIFileSave()
 {
-	bool bDocOpen  = (App.m_pDoc != NULL);
-	bool bModified = (bDocOpen && App.m_pDoc->Modified());
+	bool isDocOpen  = (g_app.m_pDoc != NULL);
+	bool isModified = (isDocOpen && g_app.m_pDoc->Modified());
 
-	App.m_oAppWnd.m_oMenu.EnableCmd(ID_FILE_SAVE, (bDocOpen && bModified));
-	App.m_oAppWnd.m_oToolbar.m_btnSave.Enable(bDocOpen && bModified);
+	g_app.m_appWnd.m_menu.EnableCmd(ID_FILE_SAVE, (isDocOpen && isModified));
+	g_app.m_appWnd.m_toolbar.m_save.Enable(isDocOpen && isModified);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Update the command UI.
 
-void AppCmds::OnUIFileSaveAs()
+void AppCmds::onUIFileSaveAs()
 {
-	bool bDocOpen = (App.m_pDoc != NULL);
+	bool isDocOpen = (g_app.m_pDoc != NULL);
 
-	App.m_oAppWnd.m_oMenu.EnableCmd(ID_FILE_SAVEAS, bDocOpen);
+	g_app.m_appWnd.m_menu.EnableCmd(ID_FILE_SAVEAS, isDocOpen);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Update the command UI.
 
-void AppCmds::OnUIFileClose()
+void AppCmds::onUIFileClose()
 {
-	bool bDocOpen = (App.m_pDoc != NULL);
+	bool isDocOpen = (g_app.m_pDoc != NULL);
 
-	App.m_oAppWnd.m_oMenu.EnableCmd(ID_FILE_CLOSE, bDocOpen);
+	g_app.m_appWnd.m_menu.EnableCmd(ID_FILE_CLOSE, isDocOpen);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Update the command UI.
 
-void AppCmds::OnUIFileOpenMRU()
+void AppCmds::onUIFileOpenMRU()
 {
-	App.m_MRUList.UpdateMenu(App.m_oAppWnd.m_oMenu, ID_MRU_FIRST);
+	g_app.m_MRUList.UpdateMenu(g_app.m_appWnd.m_menu, ID_MRU_FIRST);
 }

@@ -13,7 +13,7 @@
 // Global variables.
 
 //! The application singleton instance.
-TheApp App;
+TheApp g_app;
 
 ////////////////////////////////////////////////////////////////////////////////
 // Constants.
@@ -28,7 +28,7 @@ const int MRU_LIST_SIZE = ID_FILE_MRU_4-ID_FILE_MRU_1+1;
 //! Constructor.
 
 TheApp::TheApp()
-	: CSDIApp(m_oAppWnd, m_oAppCmds, MRU_LIST_SIZE)
+	: CSDIApp(m_appWnd, m_appCmds, MRU_LIST_SIZE)
 {
 
 }
@@ -50,20 +50,20 @@ bool TheApp::OnOpen()
 	m_strTitle = TXT("Example");
 
 	// Load settings.
-	LoadConfig();
+	loadConfig();
 	
 	// Load the toolbar bitmap.
 	m_rCmdControl.CmdBitmap().LoadRsc(IDR_APPTOOLBAR);
 
 	// Create the main window.
-	if (!m_oAppWnd.Create())
+	if (!m_appWnd.Create())
 		return false;
 
 	// Show it.
-	m_oAppWnd.Show(m_iCmdShow);
+	m_appWnd.Show(m_iCmdShow);
 
 	// Update UI.
-	m_oAppCmds.UpdateUI();
+	m_appCmds.UpdateUI();
 
 	return true;
 }
@@ -74,7 +74,7 @@ bool TheApp::OnOpen()
 bool TheApp::OnClose()
 {
 	// Save settings.
-	SaveConfig();
+	saveConfig();
 
 	return true;
 }
@@ -90,9 +90,9 @@ CSDIDoc* TheApp::CreateDoc() const
 ////////////////////////////////////////////////////////////////////////////////
 //! Create a view for the document.
 
-CView* TheApp::CreateView(CDoc& rDoc) const
+CView* TheApp::CreateView(CDoc& doc) const
 {
-	return new TheView(static_cast<TheDoc&>(rDoc));
+	return new TheView(static_cast<TheDoc&>(doc));
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -100,11 +100,11 @@ CView* TheApp::CreateView(CDoc& rDoc) const
 
 const tchar* TheApp::FileExts() const
 {
-	static tchar szExts[] = {	TXT("Text Files (*.txt)\0*.txt\0")
+	static tchar s_exts[] = {	TXT("Text Files (*.txt)\0*.txt\0")
 								TXT("All Files (*.*)\0*.*\0")
 								TXT("\0\0")							};
 
-	return szExts;
+	return s_exts;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -112,35 +112,35 @@ const tchar* TheApp::FileExts() const
 
 const tchar* TheApp::DefFileExt() const
 {
-	static tchar szDefExt[] = { TXT("txt") };
+	static tchar s_defExt[] = { TXT("txt") };
 
-	return szDefExt;
+	return s_defExt;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Load the application settings.
 
-void TheApp::LoadConfig()
+void TheApp::loadConfig()
 {
-	CIniFile oIniFile;
+	CIniFile iniFile;
 
 	// Read the file version.
-	CString strVer = oIniFile.ReadString(TXT("Version"), TXT("Version"), INI_FILE_VER);
+	CString version = iniFile.ReadString(TXT("Version"), TXT("Version"), INI_FILE_VER);
 
 	// Read the MRU list.
-	m_MRUList.Load(oIniFile);
+	m_MRUList.Load(iniFile);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Save the application settings.
 
-void TheApp::SaveConfig()
+void TheApp::saveConfig()
 {
-	CIniFile oIniFile;
+	CIniFile iniFile;
 
 	// Write the file version.
-	oIniFile.WriteString(TXT("Version"), TXT("Version"), INI_FILE_VER);
+	iniFile.WriteString(TXT("Version"), TXT("Version"), INI_FILE_VER);
 
 	// Save the MRU list.
-	m_MRUList.Save(oIniFile);
+	m_MRUList.Save(iniFile);
 }

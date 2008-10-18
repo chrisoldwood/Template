@@ -32,15 +32,15 @@ public:
 	//
 	// Public Members.
 	//
-	CFrameMenu	m_oMenu;		//!< The main menu.
-	AppToolbar	m_oToolbar;		//!< The toolbar.
-	CStatusBar	m_oStatusbar;	//!< The status bar.
+	CFrameMenu	m_menu;			//!< The main menu.
+	AppToolbar	m_toolbar;		//!< The toolbar.
+	CStatusBar	m_statusbar;	//!< The status bar.
 
 private:
 	//
 	// Internal members.
 	//
-	CAccel		m_oAccel;		//!< The accelerator table.
+	CAccel		m_accelerators;	//!< The accelerator table.
 
 	// Child window IDs.
 	enum
@@ -54,7 +54,7 @@ private:
 	//
 
 	//! Handle window creation.
-	virtual void OnCreate(const CRect& rcClient);
+	virtual void OnCreate(const CRect& clientRect);
 };
 
 #endif // APP_APPWND_HPP

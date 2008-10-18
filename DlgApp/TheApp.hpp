@@ -30,12 +30,12 @@ public:
 	//
 	// Public members.
 	//
-	AppWnd		m_oAppWnd;		//!< The main window.
-	AppCmds		m_oAppCmds;		//!< The command handler.
+	AppWnd		m_appWnd;		//!< The main window.
+	AppCmds		m_appCmds;		//!< The command handler.
 
 private:
 	//
-	// Template methods.
+	// CApp overriden methods.
 	//
 
 	//! Handle application startup.
@@ -49,13 +49,13 @@ private:
 	//
 
 	//! Load the application settings.
-	void LoadConfig();
+	void loadConfig();
 
 	//! Save the application settings.
-	void SaveConfig();
+	void saveConfig();
 };
 
 //! The application singleton instance.
-extern TheApp App;
+extern TheApp g_app;
 
 #endif // APP_THEAPP_HPP

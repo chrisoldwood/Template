@@ -13,7 +13,7 @@ AppToolbar::AppToolbar()
 {
 	// Define the toolbar.
 	DEFINE_TOOLBAR
-		TBCTL(&m_btnHelp,	ID_HELP_ABOUT)
+		TBCTL(&m_help,	ID_HELP_ABOUT)
 	END_TOOLBAR
 }
 

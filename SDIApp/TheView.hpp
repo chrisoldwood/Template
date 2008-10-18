@@ -19,7 +19,7 @@ class TheView : public CView
 {
 public:
 	//! Constructor.
-	TheView(TheDoc& rDoc);
+	TheView(TheDoc& doc);
 
 	//! Destructor.
 	virtual ~TheView();
@@ -34,10 +34,10 @@ private:
 	//
 
 	//! Handle window creation.
-	virtual void OnCreate(const CRect& rcClient);
+	virtual void OnCreate(const CRect& clientRect);
 
 	//! Handle window resizing.
-	virtual void OnResize(int iFlag, const CSize& rNewSize);
+	virtual void OnResize(int flag, const CSize& newSize);
 };
 
 #endif // APP_THEVIEW_HPP

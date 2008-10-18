@@ -10,8 +10,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! Constructor.
 
-TheView::TheView(TheDoc& rDoc)
-	: CView(rDoc)
+TheView::TheView(TheDoc& doc)
+	: CView(doc)
 {
 }
 
@@ -25,13 +25,13 @@ TheView::~TheView()
 ////////////////////////////////////////////////////////////////////////////////
 //! Handle window creation.
 
-void TheView::OnCreate(const CRect& /*rcClient*/)
+void TheView::OnCreate(const CRect& /*clientRect*/)
 {
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Handle window resizing.
 
-void TheView::OnResize(int /*iFlag*/, const CSize& /*rNewSize*/)
+void TheView::OnResize(int /*flag*/, const CSize& /*newSize*/)
 {
 }

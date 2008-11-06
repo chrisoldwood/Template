@@ -74,7 +74,7 @@ int TheApp::run(int argc, tchar* argv[])
 void TheApp::showUsage()
 {
 	tcout << std::endl;
-	tcout << TXT("USAGE: Application [options] ...") << std::endl;
+	tcout << TXT("USAGE: ") << s_appName << (" [options] ...") << std::endl;
 	tcout << std::endl;
 
 	tcout << m_parser.FormatSwitches(Core::CmdLineParser::UNIX);

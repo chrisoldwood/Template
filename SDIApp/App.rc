@@ -75,6 +75,11 @@ BEGIN
         MENUITEM "&2.",                         ID_FILE_MRU_2
         MENUITEM "&3.",                         ID_FILE_MRU_3
         MENUITEM "&4.",                         ID_FILE_MRU_4
+        MENUITEM "&5.",                         ID_FILE_MRU_5
+        MENUITEM "&6.",                         ID_FILE_MRU_6
+        MENUITEM "&7.",                         ID_FILE_MRU_7
+        MENUITEM "&8.",                         ID_FILE_MRU_8
+        MENUITEM "&9.",                         ID_FILE_MRU_9
         MENUITEM SEPARATOR
         MENUITEM "E&xit\tAlt+F4",               ID_FILE_EXIT
     END

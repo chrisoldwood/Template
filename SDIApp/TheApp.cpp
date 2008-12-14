@@ -7,7 +7,8 @@
 #include "TheApp.hpp"
 #include "TheDoc.hpp"
 #include "TheView.hpp"
-#include <WCL/IniFile.hpp>
+#include <WCL/AppConfig.hpp>
+#include <Core/ConfigurationException.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
 // Global variables.
@@ -18,11 +19,15 @@ TheApp g_app;
 ////////////////////////////////////////////////////////////////////////////////
 // Constants.
 
-//! The .ini file format version number.
-const tchar* INI_FILE_VER = TXT("1.0");
+//! The configuration data publisher name.
+const tchar* PUBLISHER = TXT("Chris Oldwood");
+//! The configuration data application name.
+const tchar* APPLICATION = TXT("The Application");
+//! The configuration data format version.
+const tchar* CONFIG_VERSION = TXT("1.0");
 
 //! The maximum size of the MRU list.
-const int MRU_LIST_SIZE = ID_FILE_MRU_4-ID_FILE_MRU_1+1;
+const int MRU_LIST_SIZE = ID_FILE_MRU_9-ID_FILE_MRU_1+1;
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Constructor.
@@ -49,8 +54,16 @@ bool TheApp::OnOpen()
 	// Set the app title.
 	m_strTitle = TXT("Example");
 
-	// Load settings.
-	loadConfig();
+	try
+	{
+		// Load settings.
+		loadConfig();
+	}
+	catch (const Core::Exception& e)
+	{
+		FatalMsg(TXT("Failed to configure the application:-\n\n%s"), e.What());
+		return false;
+	}
 	
 	// Load the toolbar bitmap.
 	m_rCmdControl.CmdBitmap().LoadRsc(IDR_APPTOOLBAR);
@@ -73,8 +86,16 @@ bool TheApp::OnOpen()
 
 bool TheApp::OnClose()
 {
-	// Save settings.
-	saveConfig();
+	try
+	{
+		// Save settings.
+		saveConfig();
+	}
+	catch (const Core::Exception& e)
+	{
+		FatalMsg(TXT("Failed to save the application configuration:-\n\n%s"), e.What());
+		return false;
+	}
 
 	return true;
 }
@@ -122,13 +143,16 @@ const tchar* TheApp::DefFileExt() const
 
 void TheApp::loadConfig()
 {
-	CIniFile iniFile;
+	WCL::AppConfig appConfig(PUBLISHER, APPLICATION);
 
-	// Read the file version.
-	CString version = iniFile.ReadString(TXT("Version"), TXT("Version"), INI_FILE_VER);
+	// Read the config data version.
+	tstring version = appConfig.readString(appConfig.DEFAULT_SECTION, TXT("Version"), CONFIG_VERSION);
+
+	if (version != CONFIG_VERSION)
+		throw Core::ConfigurationException(Core::Fmt(TXT("The configuration data is incompatible - '%s'"), version.c_str()));
 
 	// Read the MRU list.
-	m_MRUList.Load(iniFile);
+	m_MRUList.Read(appConfig);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -136,11 +160,11 @@ void TheApp::loadConfig()
 
 void TheApp::saveConfig()
 {
-	CIniFile iniFile;
+	WCL::AppConfig appConfig(PUBLISHER, APPLICATION);
 
-	// Write the file version.
-	iniFile.WriteString(TXT("Version"), TXT("Version"), INI_FILE_VER);
+	// Write the config data version.
+	appConfig.writeString(appConfig.DEFAULT_SECTION, TXT("Version"), CONFIG_VERSION);
 
-	// Save the MRU list.
-	m_MRUList.Save(iniFile);
+	// Write the MRU list.
+	m_MRUList.Write(appConfig);
 }

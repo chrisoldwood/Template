@@ -5,7 +5,6 @@
 
 #include "Common.hpp"
 #include "AboutDlg.hpp"
-#include "TheApp.hpp"
 #include <WCL/Path.hpp>
 #include <WCL/VerInfoReader.hpp>
 

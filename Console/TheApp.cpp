@@ -50,16 +50,16 @@ TheApp::~TheApp()
 
 int TheApp::run(int argc, tchar* argv[])
 {
-	m_parser.Parse(argc, argv, Core::CmdLineParser::ALLOW_UNIX_FORMAT);
+	m_parser.parse(argc, argv, Core::CmdLineParser::ALLOW_UNIX_FORMAT);
 
 	// Request for help?
-	if (m_parser.IsSwitchSet(USAGE))
+	if (m_parser.isSwitchSet(USAGE))
 	{
 		showUsage();
 		return EXIT_SUCCESS;
 	}
 	// Request for version?
-	else if (m_parser.IsSwitchSet(VERSION))
+	else if (m_parser.isSwitchSet(VERSION))
 	{
 		showVersion();
 		return EXIT_SUCCESS;
@@ -77,7 +77,7 @@ void TheApp::showUsage()
 	tcout << TXT("USAGE: ") << s_appName << (" [options] ...") << std::endl;
 	tcout << std::endl;
 
-	tcout << m_parser.FormatSwitches(Core::CmdLineParser::UNIX);
+	tcout << m_parser.formatSwitches(Core::CmdLineParser::UNIX);
 }
 
 ////////////////////////////////////////////////////////////////////////////////

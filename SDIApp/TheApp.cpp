@@ -61,7 +61,7 @@ bool TheApp::OnOpen()
 	}
 	catch (const Core::Exception& e)
 	{
-		FatalMsg(TXT("Failed to configure the application:-\n\n%s"), e.What());
+		FatalMsg(TXT("Failed to configure the application:-\n\n%s"), e.twhat());
 		return false;
 	}
 	
@@ -93,7 +93,7 @@ bool TheApp::OnClose()
 	}
 	catch (const Core::Exception& e)
 	{
-		FatalMsg(TXT("Failed to save the application configuration:-\n\n%s"), e.What());
+		FatalMsg(TXT("Failed to save the application configuration:-\n\n%s"), e.twhat());
 		return false;
 	}
 
@@ -149,7 +149,7 @@ void TheApp::loadConfig()
 	tstring version = appConfig.readString(appConfig.DEFAULT_SECTION, TXT("Version"), CONFIG_VERSION);
 
 	if (version != CONFIG_VERSION)
-		throw Core::ConfigurationException(Core::Fmt(TXT("The configuration data is incompatible - '%s'"), version.c_str()));
+		throw Core::ConfigurationException(Core::fmt(TXT("The configuration data is incompatible - '%s'"), version.c_str()));
 
 	// Read the MRU list.
 	m_MRUList.Read(appConfig);

@@ -6,6 +6,7 @@
 #include "Common.hpp"
 #include <tchar.h>
 #include "TheApp.hpp"
+#include <Core/tiostream.hpp>
 
 //! The application.
 static TheApp g_app;
@@ -15,5 +16,5 @@ static TheApp g_app;
 
 int _tmain(int argc, tchar* argv[])
 {
-	return g_app.main(argc, argv);
+	return g_app.main(argc, argv, tcin, tcout, tcerr);
 }

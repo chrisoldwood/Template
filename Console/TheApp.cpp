@@ -5,7 +5,6 @@
 
 #include "Common.hpp"
 #include "TheApp.hpp"
-#include <Core/tiostream.hpp>
 #include <WCL/Path.hpp>
 #include <WCL/VerInfoReader.hpp>
 
@@ -26,6 +25,7 @@ enum
 static Core::CmdLineSwitch s_switches[] = 
 {
 	{ USAGE,	TXT("?"),	NULL,			Core::CmdLineSwitch::ONCE,	Core::CmdLineSwitch::NONE,	NULL,	TXT("Display the program options syntax")	},
+	{ USAGE,	TXT("h"),	TXT("help"),	Core::CmdLineSwitch::ONCE,	Core::CmdLineSwitch::NONE,	NULL,	TXT("Display the program options syntax")	},
 	{ VERSION,	TXT("v"),	TXT("version"),	Core::CmdLineSwitch::ONCE,	Core::CmdLineSwitch::NONE,	NULL,	TXT("Display the program version")			},
 };
 static size_t s_switchCount = ARRAY_SIZE(s_switches);
@@ -48,20 +48,20 @@ TheApp::~TheApp()
 ////////////////////////////////////////////////////////////////////////////////
 //! Run the application.
 
-int TheApp::run(int argc, tchar* argv[])
+int TheApp::run(int argc, tchar* argv[], tistream& /*in*/, tostream& out, tostream& /*err*/)
 {
 	m_parser.parse(argc, argv, Core::CmdLineParser::ALLOW_UNIX_FORMAT);
 
 	// Request for help?
 	if (m_parser.isSwitchSet(USAGE))
 	{
-		showUsage();
+		showUsage(out);
 		return EXIT_SUCCESS;
 	}
 	// Request for version?
 	else if (m_parser.isSwitchSet(VERSION))
 	{
-		showVersion();
+		showVersion(out);
 		return EXIT_SUCCESS;
 	}
 
@@ -71,19 +71,19 @@ int TheApp::run(int argc, tchar* argv[])
 ////////////////////////////////////////////////////////////////////////////////
 //! Display the program options syntax.
 
-void TheApp::showUsage()
+void TheApp::showUsage(tostream& out)
 {
-	tcout << std::endl;
-	tcout << TXT("USAGE: ") << s_appName << (" [options] ...") << std::endl;
-	tcout << std::endl;
+	out << std::endl;
+	out << TXT("USAGE: ") << s_appName << (" [options] ...") << std::endl;
+	out << std::endl;
 
-	tcout << m_parser.formatSwitches(Core::CmdLineParser::UNIX);
+	out << m_parser.formatSwitches(Core::CmdLineParser::UNIX);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
 //! Display the program version.
 
-void TheApp::showVersion()
+void TheApp::showVersion(tostream& out)
 {
 	// Extract details from the resources.
 	tstring filename  = CPath::Application();
@@ -95,7 +95,7 @@ void TheApp::showVersion()
 #endif
 
 	// Display version etc.
-	tcout << std::endl;
-	tcout << s_appName << TXT(" v") << version << std::endl;
-	tcout << copyright << std::endl;
+	out << std::endl;
+	out << s_appName << TXT(" v") << version << std::endl;
+	out << copyright << std::endl;
 }

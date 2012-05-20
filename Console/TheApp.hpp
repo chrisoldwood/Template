@@ -31,10 +31,10 @@ protected:
 	//
 
 	//! Run the application.
-	virtual int run(int argc, tchar* argv[]);
+	virtual int run(int argc, tchar* argv[], tistream& in, tostream& out, tostream& err);
 
 	//! Display the program options syntax.
-	virtual void showUsage();
+	virtual void showUsage(tostream& out);
 
 private:
 	//
@@ -47,7 +47,7 @@ private:
 	//
 
 	//! Display the program version.
-	void showVersion();
+	void showVersion(tostream& out);
 };
 
 #endif // THEAPP_HPP

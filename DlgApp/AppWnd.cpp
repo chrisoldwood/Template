@@ -9,8 +9,9 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! Constructor.
 
-AppWnd::AppWnd()
+AppWnd::AppWnd(WCL::IMsgThread& thread, WCL::ICmdController& controller)
 	: CDlgFrame(IDR_APPICON, m_mainDlg, false)
+	, m_toolbar(thread, controller)
 {
 }
 

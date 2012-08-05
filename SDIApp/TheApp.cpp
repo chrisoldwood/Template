@@ -34,6 +34,8 @@ const int MRU_LIST_SIZE = ID_FILE_MRU_9-ID_FILE_MRU_1+1;
 
 TheApp::TheApp()
 	: CSDIApp(m_appWnd, m_appCmds, MRU_LIST_SIZE)
+	, m_appWnd(m_MainThread, m_appCmds)
+	, m_appCmds()
 {
 
 }
@@ -54,29 +56,16 @@ bool TheApp::OnOpen()
 	// Set the app title.
 	m_strTitle = TXT("Example");
 
-	try
-	{
-		// Load settings.
-		loadConfig();
-	}
-	catch (const Core::Exception& e)
-	{
-		FatalMsg(TXT("Failed to configure the application:-\n\n%s"), e.twhat());
+	// Load settings.
+	if (!loadConfig())
 		return false;
-	}
 	
-	// Load the toolbar bitmap.
-	m_rCmdControl.CmdBitmap().LoadRsc(IDR_APPTOOLBAR);
-
 	// Create the main window.
-	if (!m_appWnd.Create())
+	if (!m_appWnd.Open(m_iCmdShow))
 		return false;
-
-	// Show it.
-	m_appWnd.Show(m_iCmdShow);
 
 	// Update UI.
-	m_appCmds.UpdateUI();
+	m_appCmds.InitialiseUI();
 
 	return true;
 }
@@ -141,18 +130,28 @@ const tchar* TheApp::DefFileExt() const
 ////////////////////////////////////////////////////////////////////////////////
 //! Load the application settings.
 
-void TheApp::loadConfig()
+bool TheApp::loadConfig()
 {
-	WCL::AppConfig appConfig(PUBLISHER, APPLICATION);
+	try
+	{
+		WCL::AppConfig appConfig(PUBLISHER, APPLICATION);
 
-	// Read the config data version.
-	tstring version = appConfig.readString(appConfig.DEFAULT_SECTION, TXT("Version"), CONFIG_VERSION);
+		// Read the config data version.
+		tstring version = appConfig.readString(appConfig.DEFAULT_SECTION, TXT("Version"), CONFIG_VERSION);
 
-	if (version != CONFIG_VERSION)
-		throw Core::ConfigurationException(Core::fmt(TXT("The configuration data is incompatible - '%s'"), version.c_str()));
+		if (version != CONFIG_VERSION)
+			throw Core::ConfigurationException(Core::fmt(TXT("The configuration data is incompatible - '%s'"), version.c_str()));
 
-	// Read the MRU list.
-	m_MRUList.Read(appConfig);
+		// Read the MRU list.
+		m_MRUList.Read(appConfig);
+	}
+	catch (const Core::Exception& e)
+	{
+		FatalMsg(TXT("Failed to configure the application:-\n\n%s"), e.twhat());
+		return false;
+	}
+
+	return true;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -49,7 +49,7 @@ private:
 	//
 
 	//! Load the application settings.
-	void loadConfig();
+	bool loadConfig();
 
 	//! Save the application settings.
 	void saveConfig();

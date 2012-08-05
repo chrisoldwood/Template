@@ -24,7 +24,7 @@ class AppWnd : public CSDIFrame
 {
 public:
 	//! Constructor.
-	AppWnd();
+	AppWnd(WCL::IMsgThread& thread, WCL::ICmdController& controller);
 
 	//! Destructor.
 	virtual ~AppWnd();

@@ -13,6 +13,9 @@
 
 #include <WCL/CmdCtrl.hpp>
 
+// Forward declarations.
+class AppWnd;
+
 ////////////////////////////////////////////////////////////////////////////////
 //! The application command controller.
 
@@ -20,7 +23,7 @@ class AppCmds : public CCmdControl
 {
 public:
 	//! Constructor.
-	AppCmds();
+	AppCmds(AppWnd& appWnd);
 
 	//! Destructor.
 	virtual ~AppCmds();

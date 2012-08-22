@@ -18,8 +18,8 @@ const int ID_MRU_LAST = ID_FILE_MRU_4;
 ////////////////////////////////////////////////////////////////////////////////
 //! Constructor.
 
-AppCmds::AppCmds()
-	: CSDICmds(IDR_APPTOOLBAR)
+AppCmds::AppCmds(AppWnd& appWnd)
+	: CSDICmds(appWnd, IDR_APPTOOLBAR)
 {
 	// Define the command table.
 	DEFINE_CMD_TABLE

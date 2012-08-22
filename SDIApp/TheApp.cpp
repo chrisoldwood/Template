@@ -35,7 +35,7 @@ const int MRU_LIST_SIZE = ID_FILE_MRU_9-ID_FILE_MRU_1+1;
 TheApp::TheApp()
 	: CSDIApp(m_appWnd, m_appCmds, MRU_LIST_SIZE)
 	, m_appWnd(m_MainThread, m_appCmds)
-	, m_appCmds()
+	, m_appCmds(m_appWnd)
 {
 
 }

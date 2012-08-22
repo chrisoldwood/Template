@@ -13,6 +13,9 @@
 
 #include <WCL/SDICmds.hpp>
 
+// Forward declarations.
+class AppWnd;
+
 ////////////////////////////////////////////////////////////////////////////////
 //! The application command controller.
 
@@ -20,7 +23,7 @@ class AppCmds : public CSDICmds
 {
 public:
 	//! Constructor.
-	AppCmds();
+	AppCmds(AppWnd& appWnd);
 
 	//! Destructor.
 	virtual ~AppCmds();

@@ -11,8 +11,8 @@
 ////////////////////////////////////////////////////////////////////////////////
 //! Constructor.
 
-AppCmds::AppCmds()
-	: CCmdControl(IDR_APPTOOLBAR)
+AppCmds::AppCmds(AppWnd& appWnd)
+	: CCmdControl(appWnd, IDR_APPTOOLBAR)
 {
 	// Define the command table.
 	DEFINE_CMD_TABLE

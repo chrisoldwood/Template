@@ -30,7 +30,7 @@ const tchar* CONFIG_VERSION = TXT("1.0");
 TheApp::TheApp()
 	: CApp(m_appWnd, m_appCmds)
 	, m_appWnd(m_MainThread, m_appCmds)
-	, m_appCmds()
+	, m_appCmds(m_appWnd)
 {
 
 }

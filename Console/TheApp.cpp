@@ -9,11 +9,6 @@
 #include <WCL/VerInfoReader.hpp>
 
 ////////////////////////////////////////////////////////////////////////////////
-// Local variables.
-
-static tstring s_appName(TXT("Application"));
-
-////////////////////////////////////////////////////////////////////////////////
 // The table of command line switches.
 
 enum
@@ -69,33 +64,21 @@ int TheApp::run(int argc, tchar* argv[], tistream& /*in*/, tostream& out, tostre
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Display the program options syntax.
+//! Get the name of the application.
 
-void TheApp::showUsage(tostream& out)
+tstring TheApp::applicationName() const
 {
-	out << std::endl;
-	out << TXT("USAGE: ") << s_appName << (" [options] ...") << std::endl;
-	out << std::endl;
-
-	out << m_parser.formatSwitches(Core::CmdLineParser::UNIX);
+	return TXT("AppCmd");
 }
 
 ////////////////////////////////////////////////////////////////////////////////
-//! Display the program version.
+//! Display the program options syntax.
 
-void TheApp::showVersion(tostream& out)
+void TheApp::showUsage(tostream& out) const
 {
-	// Extract details from the resources.
-	tstring filename  = CPath::Application();
-	tstring version   = WCL::VerInfoReader::GetStringValue(filename, WCL::VerInfoReader::PRODUCT_VERSION);
-	tstring copyright = WCL::VerInfoReader::GetStringValue(filename, WCL::VerInfoReader::LEGAL_COPYRIGHT);
-
-#ifdef _DEBUG
-	version += TXT(" [Debug]");
-#endif
-
-	// Display version etc.
 	out << std::endl;
-	out << s_appName << TXT(" v") << version << std::endl;
-	out << copyright << std::endl;
+	out << TXT("USAGE: ") << applicationName() << (" [options] ...") << std::endl;
+	out << std::endl;
+
+	out << m_parser.formatSwitches(Core::CmdLineParser::UNIX);
 }

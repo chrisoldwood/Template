@@ -33,21 +33,17 @@ protected:
 	//! Run the application.
 	virtual int run(int argc, tchar* argv[], tistream& in, tostream& out, tostream& err);
 
+	//! Get the name of the application.
+	virtual tstring applicationName() const;
+
 	//! Display the program options syntax.
-	virtual void showUsage(tostream& out);
+	virtual void showUsage(tostream& out) const;
 
 private:
 	//
 	// Members.
 	//
 	Core::CmdLineParser m_parser;		//!< The command line parser.
-
-	//
-	// Internal methods.
-	//
-
-	//! Display the program version.
-	void showVersion(tostream& out);
 };
 
 #endif // THEAPP_HPP

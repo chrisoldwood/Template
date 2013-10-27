@@ -4,10 +4,6 @@
 	Version="7.10"
 	Name="SDIApp"
 	ProjectGUID="{96B93C5B-6B1E-4AA9-BCBF-45B382BFB058}"
-	SccProjectName="SAK"
-	SccAuxPath="SAK"
-	SccLocalPath="SAK"
-	SccProvider="SAK"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform

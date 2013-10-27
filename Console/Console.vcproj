@@ -4,10 +4,6 @@
 	Version="7.10"
 	Name="Console"
 	ProjectGUID="{CFAE091E-BCEF-4443-9880-400A997C156F}"
-	SccProjectName="SAK"
-	SccAuxPath="SAK"
-	SccLocalPath="SAK"
-	SccProvider="SAK"
 	Keyword="Win32Proj">
 	<Platforms>
 		<Platform

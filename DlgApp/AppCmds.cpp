@@ -17,9 +17,9 @@ AppCmds::AppCmds(AppWnd& appWnd)
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
-		CMD_ENTRY(ID_FILE_EXIT,		&AppCmds::onFileExit,	NULL,	-1)
+		CMD_ENTRY(ID_FILE_EXIT,		&AppCmds::onFileExit,	nullptr,	-1)
 		// Help menu.
-		CMD_ENTRY(ID_HELP_ABOUT,	&AppCmds::onHelpAbout,	NULL,	 2)
+		CMD_ENTRY(ID_HELP_ABOUT,	&AppCmds::onHelpAbout,	nullptr,	 2)
 	END_CMD_TABLE
 }
 

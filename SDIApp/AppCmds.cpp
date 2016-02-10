@@ -24,15 +24,15 @@ AppCmds::AppCmds(AppWnd& appWnd)
 	// Define the command table.
 	DEFINE_CMD_TABLE
 		// File menu.
-		CMD_ENTRY(ID_FILE_NEW,					&AppCmds::onFileNew,		NULL,						 0)
-		CMD_ENTRY(ID_FILE_OPEN,					&AppCmds::onFileOpen,		NULL,						 1)
+		CMD_ENTRY(ID_FILE_NEW,					&AppCmds::onFileNew,		nullptr,					 0)
+		CMD_ENTRY(ID_FILE_OPEN,					&AppCmds::onFileOpen,		nullptr,					 1)
 		CMD_ENTRY(ID_FILE_SAVE,					&AppCmds::onFileSave,		&AppCmds::onUIFileSave,		 2)
 		CMD_ENTRY(ID_FILE_SAVEAS,				&AppCmds::onFileSaveAs,		&AppCmds::onUIFileSaveAs,	-1)
 		CMD_ENTRY(ID_FILE_CLOSE,				&AppCmds::onFileClose,		&AppCmds::onUIFileClose,	 1)
 		CMD_RANGE(ID_MRU_FIRST,	ID_MRU_LAST,	&AppCmds::onFileOpenMRU,	&AppCmds::onUIFileOpenMRU,	-1)
-		CMD_ENTRY(ID_FILE_EXIT,					&AppCmds::onFileExit,		NULL,						-1)
+		CMD_ENTRY(ID_FILE_EXIT,					&AppCmds::onFileExit,		nullptr,					-1)
 		// Help menu.
-		CMD_ENTRY(ID_HELP_ABOUT,				&AppCmds::onHelpAbout,		NULL,						10)
+		CMD_ENTRY(ID_HELP_ABOUT,				&AppCmds::onHelpAbout,		nullptr,					10)
 	END_CMD_TABLE
 }
 
@@ -114,7 +114,7 @@ void AppCmds::onHelpAbout()
 
 void AppCmds::onUIFileSave()
 {
-	bool isDocOpen  = (g_app.m_pDoc != NULL);
+	bool isDocOpen  = (g_app.m_pDoc != nullptr);
 	bool isModified = (isDocOpen && g_app.m_pDoc->Modified());
 
 	g_app.m_appWnd.m_menu.EnableCmd(ID_FILE_SAVE, (isDocOpen && isModified));
@@ -126,7 +126,7 @@ void AppCmds::onUIFileSave()
 
 void AppCmds::onUIFileSaveAs()
 {
-	bool isDocOpen = (g_app.m_pDoc != NULL);
+	bool isDocOpen = (g_app.m_pDoc != nullptr);
 
 	g_app.m_appWnd.m_menu.EnableCmd(ID_FILE_SAVEAS, isDocOpen);
 }
@@ -136,7 +136,7 @@ void AppCmds::onUIFileSaveAs()
 
 void AppCmds::onUIFileClose()
 {
-	bool isDocOpen = (g_app.m_pDoc != NULL);
+	bool isDocOpen = (g_app.m_pDoc != nullptr);
 
 	g_app.m_appWnd.m_menu.EnableCmd(ID_FILE_CLOSE, isDocOpen);
 }

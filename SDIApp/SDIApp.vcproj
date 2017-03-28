@@ -4,6 +4,7 @@
 	Version="9.00"
 	Name="SDIApp"
 	ProjectGUID="{96B93C5B-6B1E-4AA9-BCBF-45B382BFB058}"
+	RootNamespace="SDIApp"
 	Keyword="Win32Proj"
 	TargetFrameworkVersion="131072"
 	>
@@ -47,7 +48,6 @@
 				MinimalRebuild="true"
 				ExceptionHandling="0"
 				BasicRuntimeChecks="3"
-				SmallerTypeCheck="true"
 				RuntimeLibrary="1"
 				TreatWChar_tAsBuiltInType="true"
 				ForceConformanceInForLoopScope="true"
@@ -184,9 +184,11 @@
 	<References>
 		<ProjectReference
 			ReferencedProjectIdentifier="{790BC113-52FB-4565-8968-79B8B011C520}"
+			RelativePathToProject="..\..\Lib\Core\Core.vcproj"
 		/>
 		<ProjectReference
 			ReferencedProjectIdentifier="{9B0335B6-93BE-4604-8497-27431874D758}"
+			RelativePathToProject="..\..\Lib\WCL\Wcl.vcproj"
 		/>
 	</References>
 	<Files>
